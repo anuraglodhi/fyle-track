@@ -1,0 +1,50 @@
+<p-table
+  [value]="workoutData()"
+  #workouts
+  [globalFilterFields]="['name']"
+  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[2, 3, 4, 5, 6, 7, 8, 9, 10]"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex gap-2">
+      <input
+        pInputText
+        type="text"
+        (input)="workouts.filterGlobal(inputEventValue($event), 'contains')"
+        placeholder="Search"
+      />
+      <p-dropdown
+        id="workoutType"
+        formControlName="workoutType"
+        [options]="workoutTypes"
+        placeholder="Filter by Workout Type"
+        (onChange)="workouts.filter($event.value, 'workouts', 'customFilter')"
+        [showClear]="true"
+        appendTo="body"
+        required
+      ></p-dropdown>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Workouts</th>
+      <th>No of Workouts</th>
+      <th>Total WorkoutMinutes</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>{{ data.name }}</td>
+      <td>{{ workoutsToString(data.workouts) }}</td>
+      <td>{{ data.workouts.length }}</td>
+      <td>{{ totalMinutes(data.workouts) }}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="4">No data found.</td>
+    </tr>
+  </ng-template>
+</p-table>

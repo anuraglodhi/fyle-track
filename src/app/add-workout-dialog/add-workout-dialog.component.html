@@ -1,0 +1,50 @@
+<p-dialog
+  header="Add Workout"
+  [modal]="true"
+  [(visible)]="visible"
+  (onHide)="closeDialog()"
+>
+  <ng-template pTemplate="header">
+    <h2 class="text-xl font-bold">Add Workout</h2>
+  </ng-template>
+  <form [formGroup]="addWorkoutForm" class="flex flex-col gap-2">
+    <div>
+      <label for="name" class="block">Name</label>
+      <input id="name" type="text" pInputText formControlName="name" required />
+    </div>
+
+    <div>
+      <label for="workoutType" class="block">Type of Workout</label>
+      <p-dropdown
+        id="workoutType"
+        formControlName="workoutType"
+        [options]="workoutTypes"
+        placeholder="Select a workout type"
+        appendTo="body"
+        required
+      ></p-dropdown>
+    </div>
+
+    <div>
+      <label for="duration" class="block">Duration (minutes)</label>
+      <p-inputNumber
+        id="duration"
+        pInputNumber
+        mode="decimal"
+        formControlName="minutes"
+        suffix=" minutes"
+        required
+      />
+    </div>
+  </form>
+  <ng-template pTemplate="footer">
+    <button pButton class="py-1" label="Add" (click)="addWorkout()"></button>
+    <button
+      pButton
+      class="py-1"
+      label="Cancel"
+      (click)="closeDialog()"
+      [text]="true"
+    ></button>
+  </ng-template>
+</p-dialog>

@@ -1,10 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { INITIAL_DATA, STORAGE } from './workout-data/workout-data.service';
+import { initialWorkoutData } from './constants';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, BrowserAnimationsModule],
+      providers: [
+        { provide: STORAGE, useValue: localStorage },
+        { provide: INITIAL_DATA, useValue: initialWorkoutData },
+      ],
     }).compileComponents();
   });
 
@@ -24,6 +31,13 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, fyle-track');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Fyle-Track');
+  });
+
+  it('should show the add workout dialog', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.showAddWorkoutDialog();
+    expect(app.addWorkoutDialogVisible).toBe(true);
   });
 });

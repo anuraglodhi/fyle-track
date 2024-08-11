@@ -1,0 +1,24 @@
+<div class="flex flex-wrap gap-4">
+  <p-listbox
+    [options]="workoutDataService.userWorkoutData()"
+    scrollHeight="200px"
+    class="min-w-56"
+  >
+    <ng-template pTemplate="item" let-item>
+      <div
+        class="flex items-center p-2 hover:cursor-pointer w-full"
+        style="height: 50px"
+        (click)="selectedData.set(item.workouts)"
+      >
+        {{ item.name }}
+      </div>
+    </ng-template>
+  </p-listbox>
+  <p-chart
+    class="flex-grow"
+    type="bar"
+    [data]="chartData()"
+    [options]="options"
+  >
+  </p-chart>
+</div>

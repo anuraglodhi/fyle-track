@@ -1,12 +1,12 @@
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AddWorkoutDialogComponent } from './add-workout-dialog/add-workout-dialog.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
-import { WorkoutDataTableComponent } from "./workout-data-table/workout-data-table.component";
+import { WorkoutDataTableComponent } from './workout-data-table/workout-data-table.component';
 import { CommonModule } from '@angular/common';
+import { WorkoutChartComponent } from './workout-chart/workout-chart.component';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +18,9 @@ import { CommonModule } from '@angular/common';
     DialogModule,
     PanelModule,
     WorkoutDataTableComponent,
-    CommonModule
-],
+    CommonModule,
+    WorkoutChartComponent,
+  ],
   templateUrl: './app.component.html',
 })
 export class AppComponent {

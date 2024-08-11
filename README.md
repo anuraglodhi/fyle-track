@@ -22,12 +22,12 @@ Run `ng test --code-coverage` to execute the unit tests and generate code covera
 
 ### == Code Coverage summary ==
 
-Statements   : 100% ( 66/66 )
+Statements   : 100% ( 77/77 )
 
 Branches     : 100% ( 20/20 )
 
-Functions    : 100% ( 19/19 )
+Functions    : 100% ( 24/24 )
 
-Lines        : 100% ( 61/61 )
+Lines        : 100% ( 70/70 )
 
 ### == ==
